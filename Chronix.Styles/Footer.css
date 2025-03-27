@@ -1,0 +1,43 @@
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    padding: 0px 50px;
+    border-top: 2px solid rgb(55, 65, 81);
+}
+
+.reserved {
+    font-size: 40px;
+    font-weight: 800;
+    color: white;
+}
+
+.contact-icons {
+    display: flex;
+    gap: 50px;
+}
+
+.contact-icon {
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    border-radius: var(--main-border-radius);
+    padding: 10px;
+}
+
+.linkedin:hover {
+    background-color: rgb(8, 85, 162); 
+}
+
+.github:hover {
+    background-color: rgb(83, 78, 78); 
+}
+
+.instagram:hover {
+    background: linear-gradient(45deg, rgb(228, 64, 17), rgb(193, 53, 132), rgb(108, 43, 144)); 
+}
+
+.facebook:hover {
+    background-color: rgb(20, 98, 198); 
+}
