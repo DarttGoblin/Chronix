@@ -1,6 +1,6 @@
 -----------------------------------------------------------------------------------------------------
 
-Project: Chronix ⏰
+Project: Chronix ⏰ <br><br>
 Description: 
 	Chronix is a Chrome extension designed to help users manage their deadlines and boost 
 	productivity using the Pomodoro technique. By offering a simple, intuitive interface, 
@@ -13,7 +13,7 @@ Description:
 
 -----------------------------------------------------------------------------------------------------
 
-Required Features:
+Required Features: <br><br>
 	Display and track multiple deadlines, exams, presentations, certificates, etc...
 	Push notifications for upcoming deadlines and time-sensitive tasks.
 	Built-in Pomodoro timer for focused work sessions (25-minute work, 5-minute break).
