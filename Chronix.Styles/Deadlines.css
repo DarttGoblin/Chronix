@@ -1,0 +1,88 @@
+.deadlines-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    margin: 30px 0px;
+}
+
+.deadlines-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.deadlines-container::-webkit-scrollbar {margin-top: 20px; width: 10px;}
+.deadlines-container::-webkit-scrollbar-track {visibility: hidden;}
+.deadlines-container::-webkit-scrollbar-thumb:hover {background-color: var(--main-hover-color)}
+.deadlines-container::-webkit-scrollbar-thumb {
+    background-color: var(--main-color);
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.deadline-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+    width: 95%;
+    height: fit-content;
+    
+}
+
+.deadline-title {
+    font-size: 18px;
+    font-weight: 600;
+    width: 75%;
+}
+
+.deadline-timer-and-icons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.deadline-timer {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.deadline-icon {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.deadlines-buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.deadlines-button {
+    display: flex;
+    gap: 10px;
+    font-size: 15px;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--main-border-radius);
+    cursor: pointer;
+}
+
+.add-deadline {
+    background-color: rgb(0, 136, 0);
+}
+
+.remove-all-deadlines {
+    background-color: rgb(170, 0, 0);
+}

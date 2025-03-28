@@ -7,7 +7,7 @@ const links = [
     "https://web.facebook.com/yassine.bazgour.5/",
 ];
 
-contact_icon.forEach(icon, index => {
+contact_icon.forEach((icon, index) => {
     icon.onclick = function() {
         window.open(links[index], '_blank')
     }

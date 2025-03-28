@@ -4,31 +4,77 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="Chronix.Styles/Nav.css">
     <link rel="stylesheet" href="Chronix.Styles/Footer.css">
+    <link rel="stylesheet" href="Chronix.Styles/Deadlines.css">
     <link rel="stylesheet" href="Chronix.css">
     <title>Chronix</title>
 </head>
 <body>
+    <div class="chronix-header">
+        <div class="chronix-header-logo-container">
+            <img class="chronix-header-logo" src="Chronix.Media/Chronix.png">
+            <span class="chronix-header-title">Chronix</span>
+        </div>
+        <div class="chronix-header-icons">
+            <i class="chronix-header-icon settings fa fa-gear"></i>
+            <i class="chronix-header-icon light-mode fa fa-moon"></i>
+        </div>
+    </div>
+
     <nav>
-        <a href="Chronix.html">Deadlines</a>
-        <a href="Chronix.Pages/Promodo/Promodo.html">Promodo</a>
-        <a href="Chronix.Pages/Tasks/Tasks.html">Tasks</a>
-        <a href="Chronix.Pages/About/About.html">About</a>
+        <span class="section-title active-section-title">Deadlines</span>
+        <span class="section-title">Promodo</span>
+        <span class="section-title">Tasks</span>
+        <span class="section-title">Dashboard</span>
+        <span class="section-title">About</span>
     </nav>
 
-    <h1>This is Chronix!</h1>
-    <!-- <div class="deadlines-container"></div> -->
+    <div class="section deadlines-section active-section">
+        <!-- <span>No Deadlines Are At The Moment, Booyah! 😊</span> -->
+        <div class="deadlines-container">
+            <div class="deadline-container">
+                <span class="deadline-title">khasni nkhdem l exam dial culture khasni nkhdem l exam dial culture khasni nkhdem l exam dial culture</span>
+                <div class="deadline-timer-and-icons-container">
+                    <span class="deadline-timer">2d 10h 02min</span>
+                    <i class="deadline-icon delete-deadline fa fa-trash"></i>
+                    <i class="deadline-icon modify-deadline fa fa-pen"></i>
+                </div>
+            </div>
+            <div class="deadline-container">
+                <span class="deadline-title">khasni n9ra lmachine learning mzyan</span>
+                <div class="deadline-timer-and-icons-container">
+                    <span class="deadline-timer">2d 10h 02min</span>
+                    <i class="deadline-icon delete-deadline fa fa-trash"></i>
+                    <i class="deadline-icon modify-deadline fa fa-pen"></i>
+                </div>
+            </div>
+        </div>
+        <div class="deadlines-buttons-container">
+            <button class="remove-all-deadlines deadlines-button">
+                <i class="deadlines-buttons-icon fa fa-trash"></i>
+                Remove All
+            </button>
+           <button class="add-deadline deadlines-button">
+                <i class="deadline-buttons-icon fa fa-plus"></i>
+                Add Deadline
+            </button>
+       </div>
+    </div>
 
-    <!-- <script src="Chronix.Scripts/Deadlines.js"></script> -->
+    <div class="section promodo-section">Promodo Section</div>
+    <div class="section tasks-section">Tasks Section</div>
+    <div class="section dashboard-section">Dashboard Section</div>
+    <div class="section about-section">About Section</div>
 
     <footer>
-        <span className='reserved'>© 2025 Bazgour Yassine, All rights reserved.</span>
-        <div className='contact-icons'>
+        <span class='reserved'>© 2025 Yassine Bazgour, All rights reserved.</span>
+        <div class='contact-icons'>
             <i class='contact-icon linkedin fab fa-linkedin'></i>
             <i class='contact-icon github fab fa-github'></i>
             <i class='contact-icon instagram fab fa-instagram'></i>
-            <i class='contact-icon facebook fab fa-facebook'></i>
         </div>
     </footer>
 
-    <script src=""></script>
+    <script src="Chronix.Scripts/Nav.js"></script>
+    <script src="Chronix.Scripts/Footer.js"></script>
+    <script src="Chronix.Scripts/Deadlines.js"></script>
 </body>

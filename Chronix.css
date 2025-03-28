@@ -1,13 +1,19 @@
 :root {
-    --main-color: red;
+    --main-color: rgb(107, 154, 247);
+    --main-hover-color: rgb(63, 120, 234);
+    --main-dark-hover-color: rgb(30, 83, 188);
+    --main-light-hover-color: rgb(163, 192, 251);
+    --main-sub-color: rgb(230, 230, 230);
+    --main-border-radius: 10px;
 }
 
 body {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     margin: 0;
-    min-height: 200px;
-    width: 600px;
+    height: fit-content;
+    max-height: 600px;
+    width: 800px;
+    padding-bottom: 45px;
 }

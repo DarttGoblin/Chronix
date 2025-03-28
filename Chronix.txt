@@ -19,5 +19,6 @@ Required Features:
 	Built-in Pomodoro timer for focused work sessions (25-minute work, 5-minute break).
 	Customizable Alerts: Set your own reminder times (e.g., 1 hour, 30 minutes before a deadline).
 	Task Prioritization: Assign priority levels to tasks based on urgency or importance.
+	Plays music related to deadlines and music related to productive work and relaxation.
 
 -----------------------------------------------------------------------------------------------------

@@ -2,32 +2,40 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 100px;
-    padding: 0px 50px;
-    border-top: 2px solid rgb(55, 65, 81);
+    height: fit-content;
+    width: 100%;
+    padding: 5px;
+    background-color: var(--main-sub-color);
+    position: absolute;
+    bottom: 0;
 }
 
 .reserved {
-    font-size: 40px;
-    font-weight: 800;
-    color: white;
+    padding: 0px 20px;
+    font-size: 15px;
+    font-weight: 600;
 }
 
 .contact-icons {
     display: flex;
-    gap: 50px;
+    gap: 5px;
+    padding: 0px 20px;
 }
 
 .contact-icon {
-    font-size: 30px;
-    color: white;
+    font-size: 25px;
+    color: black;
     cursor: pointer;
     border-radius: var(--main-border-radius);
-    padding: 10px;
+    padding: 5px;
+}
+
+.contact-icon:hover {
+    color: white;
 }
 
 .linkedin:hover {
-    background-color: rgb(8, 85, 162); 
+    background-color: rgb(8, 85, 162);
 }
 
 .github:hover {
