@@ -31,11 +31,9 @@
 .deadline-container {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     gap: 5px;
     width: 95%;
     height: fit-content;
-    
 }
 
 .deadline-title {
@@ -48,7 +46,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
+    height: fit-content;
 }
 
 .deadline-timer {
@@ -83,6 +82,48 @@
     background-color: rgb(0, 136, 0);
 }
 
+.add-deadline:hover {
+    background-color: rgb(0, 73, 0);
+}
+
 .remove-all-deadlines {
     background-color: rgb(170, 0, 0);
+}
+
+.remove-all-deadlines:hover {
+    background-color: rgb(84, 0, 0);
+}
+
+.deadline-user-info {
+    display: flex;
+    gap: 20px;
+}
+
+.deadline-user-title {
+    padding: 5px;
+    border: none;
+    border-bottom: 3px solid var(--main-color);
+    outline: none;
+}
+
+.deadline-user-title:active {
+    border-bottom: 3px solid var(--main-dark-hover-color);
+}
+
+.deadline-user-date {
+    border: none;
+    border-bottom: 3px solid var(--main-hover-color); 
+}
+
+.deadline-user-button {
+    cursor: pointer;
+    padding: 5px 15px;
+    color: white;
+    border: none;
+    background-color: var(--main-color);
+    border-radius: var(--main-border-radius);
+}
+
+.deadline-user-button:hover {
+    background-color: var(--main-hover-color);
 }
