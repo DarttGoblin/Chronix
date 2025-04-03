@@ -1,9 +1,9 @@
 const history_container = document.querySelector('.history-container');
 const clear_history = document.querySelector('.clear-history');
-const clicks = document.querySelector('document');
-const movements = document.querySelector('document');
-const scrolls = document.querySelector('document');
-const keyboard = document.querySelector('document');
+const clicks = document.querySelector('.clicks');
+const movements = document.querySelector('.movements');
+const scrolls = document.querySelector('.scrolls');
+const keyboard = document.querySelector('.keyboard');
 const clear_interactions = document.querySelector('.clear-interactions');
 
 RetrieveHistory();
@@ -74,13 +74,13 @@ function ClearHistory() {
 }
 
 function RetrieveInteractions() {
-    // chrome.storage.local.get({ interactions: [0, 0, 0, 0]}, function(data) {
-    //     const interactions = data.interactions;
-    //     clicks.textContent = interactions[0];
-    //     movements.textContent = interactions[1];
-    //     scrolls.textContent = interactions[2];
-    //     keyboard.textContent = interactions[3];
-    // });
+    chrome.storage.local.get({ interactions: [0, 0, 0, 0]}, function(data) {
+        const interactions = data.interactions;
+        clicks.textContent = interactions[0];
+        scrolls.textContent = interactions[1];
+        keyboard.textContent = interactions[2];
+        movements.textContent = interactions[3];
+    });
 }
 
 function ClearInteractions() {
@@ -91,9 +91,10 @@ function ClearInteractions() {
 
             chrome.storage.local.set({ interactions: [0, 0, 0, 0]}, function() {
                 RetrieveInteractions();
+                chrome.runtime.sendMessage({ interactions_cleared: true });
             });
 
-            const sum_of_interactions = interactions[0] + interactions[1] + interactions[2] + interactions[3];
+            const sum_of_interactions = interactions.reduce((a, b) => a + b, 0);
             SaveHistoryEvent(`Removed all the ${sum_of_interactions} interactions.`);
         })
     }

@@ -3,15 +3,27 @@ Listen('scroll', 1);
 Listen('keydown', 2);
 Listen('mousemove', 3);
 
+let interactions = [0, 0, 0, 0];
+
+RetrieveInteractions(() => {
+    setInterval(() => {
+        UpdateInteractions(interactions);
+    }, 2000);
+});
+
 function Listen(action, action_index) {
     document.addEventListener(action, () => {
-        chrome.storage.local.get({ interactions: [0, 0, 0, 0]}, function(data) {
-            const interactions = data.interactions;
-
-            interactions[action_index]++;
-            chrome.storage.local.set({ interactions: interactions });
-        });
+        interactions[action_index]++;
     });
 }
 
-console.log('hello'); // im still testing this to see if it works!
+function UpdateInteractions() {
+    chrome.storage.local.set({ interactions });
+}
+
+function RetrieveInteractions(callback) {
+    chrome.storage.local.get({ interactions: [0, 0, 0, 0] }, function (data) {
+        interactions = data.interactions;
+        callback();
+    });
+}
