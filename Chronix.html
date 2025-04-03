@@ -1,0 +1,132 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="Chronix.Styles/Nav.css">
+    <link rel="stylesheet" href="Chronix.Styles/Footer.css">
+    <link rel="stylesheet" href="Chronix.Styles/Deadlines.css">
+    <link rel="stylesheet" href="Chronix.Styles/Dashboard.css">
+    <link rel="stylesheet" href="Chronix.Styles/Tasks.css">
+    <link rel="stylesheet" href="Chronix.Styles/About.css">
+    <link rel="stylesheet" href="Chronix.css">
+    <title>Chronix</title>
+</head>
+<body>
+    <div class="chronix-header">
+        <div class="chronix-header-logo-container">
+            <img class="chronix-header-logo" src="Chronix.Media/Chronix.png">
+            <span class="chronix-header-title">Chronix</span>
+        </div>
+        <div class="chronix-header-icons">
+            <i class="chronix-header-icon settings fa fa-gear"></i>
+            <i class="chronix-header-icon light-mode fa fa-moon"></i>
+        </div>
+    </div>
+
+    <nav>
+        <span class="section-title active-section-title">Deadlines</span>
+        <span class="section-title">Tasks</span>
+        <span class="section-title">Promodo</span>
+        <span class="section-title">Dashboard</span>
+        <span class="section-title">About</span>
+    </nav>
+
+    <div class="section deadlines-section active-section">
+        <div class="deadlines-container"></div>
+        <div class="deadlines-buttons-container">
+            <button class="remove-all-deadlines deadlines-button">
+                <i class="deadlines-buttons-icon fa fa-trash"></i>
+                Remove All
+            </button>
+            <button class="add-deadline deadlines-button">
+                <i class="deadline-buttons-icon fa fa-plus"></i>
+                Add Deadline
+            </button>
+        </div>
+    </div>
+
+    <div class="section tasks-section">
+        <div class="tasks-container"></div>
+        <div class="tasks-buttons-container">
+            <button class="remove-all-tasks tasks-button">
+                <i class="tasks-buttons-icon fa fa-trash"></i>
+                Remove All
+            </button>
+            <button class="add-task tasks-button">
+                <i class="task-buttons-icon fa fa-plus"></i>
+                Add Task
+            </button>
+        </div>
+    </div>
+    <div class="section promodo-section">
+        <span style="margin: 20px 0px;">Section not available now</span>
+    </div>
+    <div class="section dashboard-section">
+        <div class="history-section">
+            <span class="history-title">History</span>
+            <div class="history-container"></div>
+            <div class="history-buttons-container">
+                <button class="clear-history history-button">
+                    <i class="history-buttons-icon fa fa-trash"></i>
+                    Clear History
+                </button>
+            </div>
+        </div>
+        <div class="interactions-section">
+            <span class="interactions-title">User Interactions</span>
+            <div class="interactions-container">
+                <span class="intraction">Clicks 👆🏻: <span class="interaction-variable clicks">5</span></span>
+                <span class="intraction">Movements 🖱️: <span class="interaction-variable movements">20</span></span>
+                <span class="intraction">Scrolls 📜: <span class="interaction-variable scrolls">33</span></span>
+                <span class="intraction">Keyboard ⌨: <span class="interaction-variable keyboard">18</span></span>
+            </div>
+            <div class="interactions-buttons-container">
+                <button class="clear-interactions interactions-button">
+                    <i class="interactions-buttons-icon fa fa-trash"></i>
+                    Clear Interactions
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="section about-section">
+        👋 Hi there,<br>
+        Chronix isn't just a timer—it's your personal timekeeper, taskmaster, and gentle-but-firm deadline enforcer. 
+        Whether you're racing against exam deadlines, dodging last-minute presentations, or just trying to survive 
+        the chaotic jungle of responsibilities, Chronix keeps your most important tasks ticking right before your 
+        eyes. With a sleek interface and persistent memory (even after a full system shutdown), it refuses to let 
+        your deadlines fade into oblivion. Oh! you kept reading til this point. Em nice impressive.. :) anyway! 
+        Time waits for no one—but with Chronix, at least you'll see it coming.<br><br>
+
+        ❌ Important!<br>
+        For Brave users, Brave disables Chrome extension APIs like chrome.storage by default for privacy reasons, 
+        leading to unexpected behaviours and errors in Chronix, to fix this issue for Brave browser: <br><br>
+        
+        1. Go to Brave Settings.<br>
+        2. Navigate to extensions section in the sidenav bar.<br>
+        3. Enable "Allow Google Login for Extensions".<br>
+        3. Restart Brave and Reload the Extension.<br><br>
+        
+        This allows Chrome's extension APIs to work properly, and Chronix will run smoothly. Enjoy!<br><br>
+
+        📝 Usecases:<br>
+
+        Content not available now!
+    </div>
+
+    <footer>
+        <span class='reserved'>© 2025 Yassine Bazgour, All rights reserved.</span>
+        <div class='contact-icons'>
+            <img class="portfolio-logo" src="Chronix.Media/logo-no-bg-black.png">
+            <i class='contact-icon linkedin fab fa-linkedin'></i>
+            <i class='contact-icon github fab fa-github'></i>
+            <i class='contact-icon instagram fab fa-instagram'></i>
+        </div>
+    </footer>
+
+    <script src="Chronix.Scripts/Nav.js"></script>
+    <script src="Chronix.Scripts/Footer.js"></script>
+    <script src="Chronix.Scripts/Deadlines.js"></script>
+    <script src="Chronix.Scripts/Tasks.js"></script>
+    <script src="Chronix.Scripts/Dashboard.js"></script>
+</body>

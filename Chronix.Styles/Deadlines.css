@@ -1,0 +1,132 @@
+.deadlines-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    margin: 30px 0px;
+}
+
+.deadlines-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.deadline-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+    width: 95%;
+    height: fit-content;
+}
+
+.deadline-title {
+    font-size: 18px;
+    font-weight: 600;
+    width: 75%;
+}
+
+.deadline-timer-and-icons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    height: fit-content;
+}
+
+.deadline-timer {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.deadline-icon {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.deadlines-buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.deadlines-button {
+    display: flex;
+    gap: 10px;
+    font-size: 15px;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--main-border-radius);
+    cursor: pointer;
+}
+
+.add-deadline {
+    background-color: rgb(0, 136, 0);
+}
+
+.add-deadline:hover {
+    background-color: rgb(0, 73, 0);
+}
+
+.remove-all-deadlines {
+    background-color: rgb(170, 0, 0);
+}
+
+.remove-all-deadlines:hover {
+    background-color: rgb(84, 0, 0);
+}
+
+.deadline-user-info {
+    display: flex;
+    gap: 20px;
+}
+
+.deadline-user-title {
+    padding: 5px;
+    border: none;
+    border-bottom: 3px solid var(--main-color);
+    outline: none;
+}
+
+.deadline-user-date {
+    border: none;
+    border-bottom: 3px solid var(--main-hover-color);
+    outline: none;
+}
+
+.deadline-user-title:focus, .deadline-user-date:focus {
+    border-bottom: 3px solid var(--main-dark-hover-color);
+}
+
+.deadline-user-button {
+    cursor: pointer;
+    padding: 5px 15px;
+    color: white;
+    border: none;
+    background-color: var(--main-color);
+    border-radius: var(--main-border-radius);
+}
+
+.deadline-user-button:hover {
+    background-color: var(--main-hover-color);
+}
+
+.no-deadlines {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.deadline-trash-icon {
+    cursor: pointer;
+}
+
+.deadline-trash-icon:hover {
+    color: rgb(255, 0, 0);
+}

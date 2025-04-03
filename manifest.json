@@ -1,0 +1,22 @@
+{
+    "manifest_version": 3,
+    "name": "Chronix",
+    "version": "1.0",
+    "permissions": ["storage"],
+    "description": "Promodo and deadline reminder",
+    "action": {
+        "default_popup": "Chronix.html",
+        "default_icon": "Chronix.Media/Chronix.png"
+    },
+    "content_scripts": [ 
+        {
+            "matches": ["<all_urls>"],
+            "js": ["Chronix.Scripts/Interactions.js"]
+        }
+    ],
+    "icons": {
+        "16": "Chronix.Media/Chronix.png",
+        "48": "Chronix.Media/Chronix.png",
+        "126": "Chronix.Media/Chronix.png"
+    }
+}

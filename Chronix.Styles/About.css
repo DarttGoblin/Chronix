@@ -1,0 +1,19 @@
+.about-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    width: 90%;
+    margin: 20px 0px;
+}
+
+.steps-to-fix {
+    color: var(--main-color);
+}
+
+.instructions-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

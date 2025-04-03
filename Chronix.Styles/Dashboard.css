@@ -1,0 +1,122 @@
+.dashboard-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    margin: 30px 0px;
+}
+
+.history-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 95%;
+    gap: 10px;
+}
+
+.history-title {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.history-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 5px;
+}
+
+.event-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.event-trash-icon {
+    cursor: pointer;
+}
+
+.event-trash-icon:hover {
+    color: rgb(255, 0, 0);
+}
+
+.history-button {
+    display: flex;
+    justify-self: center;
+    gap: 10px;
+    font-size: 15px;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--main-border-radius);
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.clear-history {
+    background-color: rgb(170, 0, 0);
+}
+
+.clear-history:hover {
+    background-color: rgb(84, 0, 0);
+}
+
+.no-events {
+    font-size: 20px;
+    font-weight: 600;
+    align-self: center;
+    margin: 10px 0px;
+}
+
+.interactions-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 95%;
+    gap: 10px;
+}
+
+.interactions-title {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.interactions-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
+
+.intraction {
+    font-size: 18px;
+    /* font-weight: 700; */
+}
+
+.interaction-variable {
+    font-weight: 900;
+    color: rgb(11, 165, 11);
+}
+
+.interactions-button {
+    display: flex;
+    justify-self: center;
+    gap: 10px;
+    font-size: 15px;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--main-border-radius);
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.clear-interactions {
+    background-color: rgb(170, 0, 0);
+}
+
+.clear-interactions:hover {
+    background-color: rgb(84, 0, 0);
+}

@@ -1,0 +1,65 @@
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: fit-content;
+    width: 100%;
+    padding: 5px;
+    background-color: var(--main-sub-color);
+    /* position: absolute; */
+    /* bottom: 0; */
+}
+
+.reserved {
+    padding: 0px 20px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.contact-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 0px 20px;
+}
+
+.portfolio-logo {
+    cursor: pointer;
+    height: 26px;
+    width: 26px;
+    padding: 5px;
+}
+
+.portfolio-logo:hover {
+    background-color: white;
+    border-radius: var(--main-border-radius);
+}
+
+.contact-icon {
+    font-size: 25px;
+    color: black;
+    cursor: pointer;
+    border-radius: var(--main-border-radius);
+    padding: 5px;
+}
+
+.contact-icon:hover {
+    color: white;
+}
+
+.linkedin:hover {
+    background-color: rgb(8, 85, 162);
+}
+
+.github:hover {
+    background-color: rgb(83, 78, 78); 
+}
+
+.instagram:hover {
+    background: linear-gradient(45deg, rgb(228, 64, 17), rgb(193, 53, 132), rgb(108, 43, 144)); 
+}
+
+.facebook:hover {
+    background-color: rgb(20, 98, 198); 
+}
