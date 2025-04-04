@@ -58,6 +58,7 @@ function RequestUserInput() {
     
             chrome.storage.local.set({ tasks: tasks }, function() {
                 CreateTask(task);
+                RetrieveTasks();
             });
 
             SaveHistoryEvent(`Added "${task.title}" task with the id: ${task.id}`);

@@ -17,3 +17,15 @@
     align-items: center;
     justify-content: center;
 }
+
+.usecases {
+    display: flex;
+    align-self: flex-start;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.usecase {
+    font-weight: 600;
+    color: var(--main-hover-color);
+}

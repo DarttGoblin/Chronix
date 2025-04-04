@@ -16,7 +16,8 @@ function RetrieveHistory() {
     chrome.storage.local.get({ history: [] }, function(data) {
         const history = data.history;
         
-        if (history.length == 0) {
+        if (history.length == 0 || history.length > 99) {
+            chrome.storage.local.set({ history: [] }); // Clearing the storage upon reaching 100 log entries
             const empty = document.createElement('span');
             empty.textContent = 'History is clear. Do something! 🙂';
             empty.classList.add('no-events');
@@ -27,7 +28,7 @@ function RetrieveHistory() {
         history.slice().reverse().forEach((event, index) => {
             CreateHistoryEvent(event, index);
         });
-    })
+    });
 }
 
 function CreateHistoryEvent(event, index) {
@@ -86,16 +87,17 @@ function RetrieveInteractions() {
 function ClearInteractions() {
     const user_answer = confirm("Are you sure? This action can't be undone!");
     if (user_answer) {
-        chrome.storage.local.get({ interactions: [0, 0, 0, 0]}, function(data) {
-            const interactions = data.interactions;
+        chrome.storage.local.get({ interactions: [0, 0, 0, 0] }, function(data) {
+            const sum_of_interactions = data.interactions.reduce((a, b) => a + b, 0);
 
-            chrome.storage.local.set({ interactions: [0, 0, 0, 0]}, function() {
-                RetrieveInteractions();
+            chrome.storage.local.set({ interactions: [0, 0, 0, 0] }, function() {
+                console.log('msg sending...');
                 chrome.runtime.sendMessage({ interactions_cleared: true });
+                console.log('msg sent');
+                RetrieveInteractions();
             });
 
-            const sum_of_interactions = interactions.reduce((a, b) => a + b, 0);
             SaveHistoryEvent(`Removed all the ${sum_of_interactions} interactions.`);
-        })
+        });
     }
 }
