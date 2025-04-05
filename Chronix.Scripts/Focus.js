@@ -19,27 +19,61 @@ svg_buttons_add_short_break.onclick = AddShortBreak;
 reset_timers.onclick = ResetTimers;
 start_timers.onclick = StartTimers;
 
-UpdateTimerProgress(0);
-UpdateShortBreakProgress(0);
 
 function StartTimers() {
     const time_clicked = new Date();
-    chrome.storage.local.get({ timer_duration: 40 }, function(data) {
-        const timer_duration = data.timer_duration;
-        const target = time_clicked.setMinutes(time_clicked.getMinutes + timer_duration);
-
-        
-    });
-
+    chrome.storage.local.set({ time_clicked });
+    start_timers.textContent = 'Stop';
+    RetrieveTimerDuration();
+    RetrieveShortBreakDuration();
 }
 
-function StopTimers() {}
+function StopTimers() {
+    chrome.storage.local.set({ time_clicked: 'none' });
+    start_timers.textContent = 'Start';
+}
 
 function ResetTimers() {
     chrome.storage.local.set({timer_duration: 40});
     chrome.storage.local.set({short_break_duration: 5});
     RetrieveShortBreakDuration();
     RetrieveTimerDuration();
+}
+
+function RetrieveTimerDuration() {
+    chrome.storage.local.get({ timer_duration: 40 }, function(data) {
+        const timer_duration = data.timer_duration;
+        chrome.storage.local.get({ time_clicked: 'none' }, function(data) {
+            const time_clicked = data.time_clicked;
+            if (time_clicked == 'none') {
+                const hours = Math.floor(timer_duration / 60);
+                const minutes = timer_duration % 60;
+                timer_duration_text.textContent = `${DateFormat(hours)} : ${DateFormat(minutes)}`;
+            }
+
+            else {
+                const target = new Date(new Date(time_clicked).getTime() + timer_duration * 60000);
+                const now = new Date();
+                const diff = target - now;
+                if (diff < 0) {
+                    timer_duration_text.textContent = `00 : 00`;
+                }
+                else {
+                    const minutes_left = Math.floor((diff / 1000) / 60);
+                    const hours = Math.floor(minutes_left / 60);
+                    const minutes = minutes_left % 60;
+                    timer_duration_text.textContent = `${DateFormat(hours)} : ${DateFormat(minutes)}`;
+                }
+            }
+        });
+    });
+}
+
+function RetrieveShortBreakDuration() {
+    chrome.storage.local.get({ short_break_duration: 5 }, function(data) {
+        const short_break_duration = data.short_break_duration;
+        short_break_duration_text.textContent = DateFormat(short_break_duration);
+    });
 }
 
 function UpdateTimerProgress(timer_percent) {
@@ -52,22 +86,6 @@ function UpdateShortBreakProgress(short_break_percent) {
     let circumference = 2 * Math.PI * 45;
     let offset = circumference * (1 - short_break_percent / 100);
     short_break_progress.style.strokeDashoffset = offset;
-}
-
-function RetrieveTimerDuration() {
-    chrome.storage.local.get({ timer_duration: 40 }, function(data) {
-        const timer_duration = data.timer_duration;
-        hours = Math.floor(timer_duration / 60);
-        minutes = timer_duration % 60;
-        timer_duration_text.textContent = `${DateFormat(hours)} : ${DateFormat(minutes)}`;
-    });
-}
-
-function RetrieveShortBreakDuration() {
-    chrome.storage.local.get({ short_break_duration: 5 }, function(data) {
-        const short_break_duration = data.short_break_duration;
-        short_break_duration_text.textContent = DateFormat(short_break_duration);
-    });
 }
 
 function AddTimer() {
@@ -113,4 +131,10 @@ function SubtractShortBreak() {
 function DateFormat(date) {
     if (date < 10) return `0${date}`;
     else return date;
+}
+
+function TimesUp() {
+    return setInterval(() => {
+        chrome.storage.local.get({})
+    })
 }

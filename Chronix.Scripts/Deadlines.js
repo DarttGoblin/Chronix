@@ -117,6 +117,7 @@ function RemoveDeadline(deadline_id) {
             const deadlines_filtered = data.deadlines.filter(deadline => deadline.id !== deadline_id);
             chrome.storage.local.set({deadlines: deadlines_filtered});
             RetrieveDeadlines();
+            AdjustHeight();
         })
 
         SaveHistoryEvent(`Removed "${deadline.title}" deadline with the id: ${deadline.id} and the date: ${deadline.date}`);
@@ -131,8 +132,8 @@ function RemoveAllDeadlines() {
             if (user_answer) {
                 chrome.storage.local.set({ deadlines: []}, function() {
                     RetrieveDeadlines();
+                    AdjustHeight();
                 });
-
                 SaveHistoryEvent(`Removed all the ${deadlines.length} deadlines.`);
             }
         }

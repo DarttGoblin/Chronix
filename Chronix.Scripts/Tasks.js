@@ -1,4 +1,3 @@
-// chrome.storage.local.clear()
 const tasks_container = document.querySelector('.tasks-container');
 const add_task = document.querySelector('.add-task');
 const remove_all_tasks = document.querySelector('.remove-all-tasks');
@@ -107,6 +106,7 @@ function RemoveTask(task_id) {
             const tasks_filtered = data.tasks.filter(task => task.id !== task_id);
             chrome.storage.local.set({tasks: tasks_filtered}, function() {
                 RetrieveTasks();
+                AdjustHeight();
             });
 
             SaveHistoryEvent(`Removed "${removed_task.title}" task with the id: ${removed_task.id}`);
@@ -122,8 +122,8 @@ function RemoveAllTasks() {
             if (user_answer) {
                 chrome.storage.local.set({ tasks: []}, function() {
                     RetrieveTasks();
+                    AdjustHeight();
                 });
-
                 SaveHistoryEvent(`Removed all the ${tasks.length} tasks.`);
             }
         }

@@ -1,7 +1,6 @@
 const light_mode = document.querySelector('.light-mode');
 const footer = document.getElementsByTagName('footer')[0];
 
-// localStorage.clear();
 ModeState();
 light_mode.onclick = ChangeMode;
 

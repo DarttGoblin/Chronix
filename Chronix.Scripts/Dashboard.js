@@ -56,6 +56,7 @@ function RemoveEvent(event_id) {
             const history_filtered = data.history.filter(event => event.id !== event_id);
             chrome.storage.local.set({history: history_filtered});
             RetrieveHistory();
+            AdjustHeight();
         });
     }
 }
@@ -68,6 +69,7 @@ function ClearHistory() {
             if (user_answer) {
                 chrome.storage.local.set({ history: []}, function() {
                     RetrieveHistory();
+                    AdjustHeight();
                 });
             }
         }
