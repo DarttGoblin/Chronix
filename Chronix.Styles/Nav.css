@@ -67,6 +67,7 @@ nav {
     text-align: center;
     width: 20%;
     font-size: 18px;
+    font-weight: 600;
     height: 40px;
     border-bottom: 1px solid var(--main-sub-color);
     cursor: pointer;
@@ -75,6 +76,7 @@ nav {
 
 .active-section-title {
     color: black;
+    font-weight: 600;
     height: calc(100% - 2px);
     background-color: var(--main-light-hover-color);
     border-bottom: 3px solid var(--main-dark-hover-color);

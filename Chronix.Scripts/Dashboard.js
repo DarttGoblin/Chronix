@@ -92,8 +92,12 @@ function ClearInteractions() {
 
             chrome.storage.local.set({ interactions: [0, 0, 0, 0] }, function() {
                 console.log('msg sending...');
-                chrome.runtime.sendMessage({ interactions_cleared: true });
-                console.log('msg sent');
+                
+                chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+                    chrome.tabs.sendMessage(tabs[0].id, { interactions_cleared: true });
+                    console.log('msg sent');
+                });
+
                 RetrieveInteractions();
             });
 
