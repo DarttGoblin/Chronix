@@ -1,42 +1,32 @@
 const timer_progress = document.querySelector(".timer-progress");
-const short_break_progress = document.querySelector(".short-break-progress");
 const timer_duration_text = document.querySelector('.timer-duration');
-const short_break_duration_text = document.querySelector('.short-break-duration');
 const svg_buttons_minus_timer = document.querySelector('.svg-buttons-minus-timer');
 const svg_buttons_add_timer = document.querySelector('.svg-buttons-add-timer');
-const svg_buttons_minus_short_break = document.querySelector('.svg-buttons-minus-short-break');
-const svg_buttons_add_short_break = document.querySelector('.svg-buttons-add-short-break');
-const reset_timers = document.querySelector('.reset-timers');
-const start_timers = document.querySelector('.start-timers');
+const play_music = document.querySelector('.play-music');
+const start_timer = document.querySelector('.start-timer');
 
 RetrieveTimerDuration();
-RetrieveShortBreakDuration();
 
 svg_buttons_minus_timer.onclick = SubtractTimer;
 svg_buttons_add_timer.onclick = AddTimer;
-svg_buttons_minus_short_break.onclick = SubtractShortBreak;
-svg_buttons_add_short_break.onclick = AddShortBreak;
-reset_timers.onclick = ResetTimers;
-start_timers.onclick = StartTimers;
+play_music.onclick = PlayMusic;
+start_timer.onclick = StartTimer;
 
 
-function StartTimers() {
+function StartTimer() {
     const time_clicked = new Date();
     chrome.storage.local.set({ time_clicked });
-    start_timers.textContent = 'Stop';
+    start_timer.textContent = 'Stop';
     RetrieveTimerDuration();
-    RetrieveShortBreakDuration();
 }
 
 function StopTimers() {
     chrome.storage.local.set({ time_clicked: 'none' });
-    start_timers.textContent = 'Start';
+    start_timer.textContent = 'Start';
 }
 
 function ResetTimers() {
     chrome.storage.local.set({timer_duration: 40});
-    chrome.storage.local.set({short_break_duration: 5});
-    RetrieveShortBreakDuration();
     RetrieveTimerDuration();
 }
 
@@ -69,23 +59,10 @@ function RetrieveTimerDuration() {
     });
 }
 
-function RetrieveShortBreakDuration() {
-    chrome.storage.local.get({ short_break_duration: 5 }, function(data) {
-        const short_break_duration = data.short_break_duration;
-        short_break_duration_text.textContent = DateFormat(short_break_duration);
-    });
-}
-
 function UpdateTimerProgress(timer_percent) {
     let circumference = 2 * Math.PI * 45;
     let offset = circumference * (1 - timer_percent / 100);
     timer_progress.style.strokeDashoffset = offset;
-}
-
-function UpdateShortBreakProgress(short_break_percent) {
-    let circumference = 2 * Math.PI * 45;
-    let offset = circumference * (1 - short_break_percent / 100);
-    short_break_progress.style.strokeDashoffset = offset;
 }
 
 function AddTimer() {
@@ -98,16 +75,6 @@ function AddTimer() {
     });
 }
 
-function AddShortBreak() {
-    chrome.storage.local.get({ short_break_duration: 5 }, function(data) {
-        let short_break_duration = data.short_break_duration;
-        if (short_break_duration == 60) {return;}
-        short_break_duration = short_break_duration + 5;
-        chrome.storage.local.set({ short_break_duration });
-        RetrieveShortBreakDuration();
-    });
-}
-
 function SubtractTimer() {
     chrome.storage.local.get({ timer_duration: 5 }, function(data) {
         let timer_duration = data.timer_duration;
@@ -115,16 +82,6 @@ function SubtractTimer() {
         timer_duration = timer_duration - 20;
         chrome.storage.local.set({ timer_duration });
         RetrieveTimerDuration();
-    });
-}
-
-function SubtractShortBreak() {
-    chrome.storage.local.get({ short_break_duration: 5 }, function(data) {
-        let short_break_duration = data.short_break_duration;
-        if (short_break_duration == 5) {return;}
-        short_break_duration = short_break_duration - 5;
-        chrome.storage.local.set({ short_break_duration });
-        RetrieveShortBreakDuration();
     });
 }
 
