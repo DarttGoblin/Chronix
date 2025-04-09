@@ -74,3 +74,8 @@
 .play-music:hover {
     background-color: rgb(0, 0, 0);
 }
+
+.svg-buttons-minus-timer-small, .svg-buttons-add-timer-small {
+    font-size: 15;
+    color: black;
+}

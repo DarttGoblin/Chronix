@@ -40,7 +40,7 @@ function RequestUserInput() {
     deadline_user_button.innerHTML = 'Confirm';
 
     const now = new Date();
-    now.setHours(23, 59, 0, 0);
+    now.setHours(24, 59, 0, 0);
     const formattedDate = now.toISOString().slice(0, 16);
     deadline_user_date.value = formattedDate;
 
@@ -57,8 +57,13 @@ function RequestUserInput() {
     deadline_user_button.onclick = function() {
         const title = deadline_user_title.value.trim(); 
         const date = deadline_user_date.value;
+        const duration = CalculateDeadlineTime(date);
+    
         if (!title || !date) {
             alert("Some information must be forgotten!");
+            return;
+        } else if (duration.weeks > 52) {
+            alert('Deadline must not exceed 1 year!');
             return;
         }
 
@@ -87,6 +92,7 @@ function CreateDeadline(deadline, index) {
     const date = CalculateDeadlineTime(deadline.date);
 
     if (date == 'Expired') {deadline_timer.textContent = 'Expired';}
+    else if (date.weeks > 0) {deadline_timer.textContent = `${date.weeks}w ${date.days}d ${date.hours}h ${date.minutes}m`;}
     else {deadline_timer.textContent = `${date.days}d ${date.hours}h ${date.minutes}m`;}
 
     deadline_title.innerHTML = (index + 1) + '. ' + deadline.title;
@@ -105,7 +111,7 @@ function CreateDeadline(deadline, index) {
     deadline_container.appendChild(deadline_timer_and_icons_container);
     deadlines_container.appendChild(deadline_container);
 
-    if (CalculateDeadlineTime(deadline.date) == 'Expired' || date.days < 1) {
+    if (date == 'Expired' || (date.days < 1 && date.weeks < 1)) {
         deadline_timer.style.color = 'red';
     }
 }
@@ -145,13 +151,14 @@ function CalculateDeadlineTime(deadline_date) {
     const target = new Date(deadline_date).getTime();
     const diff = target - now;
 
-    if (diff <= 0) {return 'Expired';}
-    
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((diff / (1000 * 60)) % 60);
-    
-    return { days, hours, minutes };
+    if (diff <= 0) return 'Expired';
+
+    const minutes = Math.floor(diff / (1000 * 60)) % 60;
+    const hours = Math.floor((Math.floor(diff / (1000 * 60)) % (60 * 24)) / 60);
+    const days = Math.floor((Math.floor(diff / (1000 * 60)) % (60 * 24 * 7)) / (60 * 24));
+    const weeks = Math.floor(Math.floor(diff / (1000 * 60)) / (60 * 24 * 7));
+
+    return { weeks, days, hours, minutes };
 }
 
 function SaveHistoryEvent(user_action) {

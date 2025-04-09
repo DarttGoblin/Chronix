@@ -2,16 +2,26 @@
     "manifest_version": 3,
     "name": "Chronix",
     "version": "1.0",
-    "permissions": ["storage"],
-    "description": "Promodo and deadline reminder",
+    "permissions": ["storage", "notifications"],
+    "host_permissions": ["<all_urls>"],
+    "description": "Deadlines and tasks tracker",
     "action": {
         "default_popup": "Chronix.html",
         "default_icon": "Chronix.Media/Chronix.png"
     },
-    "content_scripts": [ 
+    "content_scripts": [
         {
             "matches": ["<all_urls>"],
-            "js": ["Chronix.Scripts/Interactions.js"]
+            "js": ["Chronix.Scripts/Interactions.js", "Chronix.Scripts/Timer.js"]
+        }
+    ],
+    "background": {
+        "service_worker": "Chronix.js"
+    },
+    "web_accessible_resources": [
+        {
+            "matches": ["<all_urls>"],
+            "resources": ["Chronix.Media/Chronix.mp3"]
         }
     ],
     "icons": {

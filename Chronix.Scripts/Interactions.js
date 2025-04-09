@@ -24,7 +24,7 @@ function Listen(interactions, action, action_index) {
 
 function UpdateInteractions(interactions) {
     return setInterval(() => {
-        chrome.storage.local.set({ interactions });
+        chrome.storage.local.set({ interactions: interactions });
         console.log('data has been updated...');
     }, 5000);
 }

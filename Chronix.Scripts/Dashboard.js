@@ -16,13 +16,20 @@ function RetrieveHistory() {
     chrome.storage.local.get({ history: [] }, function(data) {
         const history = data.history;
         
-        if (history.length == 0 || history.length > 99) {
-            chrome.storage.local.set({ history: [] }); // Clearing the storage upon reaching 100 log entries
+        if (history.length == 0) {
             const empty = document.createElement('span');
             empty.textContent = 'History is clear. Do something! 🙂';
             empty.classList.add('no-events');
             history_container.appendChild(empty);
             return;
+        }
+
+        else if (history.length > 99) {
+            chrome.storage.local.get({ history: [] }, function(data) {
+                const history = data.history;
+                history.shift();
+                chrome.storage.local.set({ history: history });
+            });
         }
         
         history.slice().reverse().forEach((event, index) => {
@@ -93,11 +100,9 @@ function ClearInteractions() {
             const sum_of_interactions = data.interactions.reduce((a, b) => a + b, 0);
 
             chrome.storage.local.set({ interactions: [0, 0, 0, 0] }, function() {
-                console.log('msg sending...');
                 
                 chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
                     chrome.tabs.sendMessage(tabs[0].id, { interactions_cleared: true });
-                    console.log('msg sent');
                 });
 
                 RetrieveInteractions();

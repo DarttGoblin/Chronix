@@ -22,6 +22,8 @@ function LightMode() {
     localStorage.setItem('mode', 'light');
     light_mode.className = '';
     light_mode.classList.add('chronix-header-icon', 'light-mode', 'fa', 'fa-moon');
+    svg_buttons_minus_timer_small.style.color = 'black';
+    svg_buttons_add_timer_small.style.color = 'black';
     footer.style.backgroundColor = 'rgb(200, 200, 200)';
     contact_icon.forEach(icon => {icon.style.color = 'black';});
     portfolio_logo.style.backgroundColor = 'rgb(200, 200, 200)';
@@ -35,6 +37,8 @@ function DarkMode() {
     localStorage.setItem('mode', 'dark');
     light_mode.className = '';
     light_mode.classList.add('chronix-header-icon', 'light-mode', 'fa', 'fa-sun');
+    svg_buttons_minus_timer_small.style.color = 'white';
+    svg_buttons_add_timer_small.style.color = 'white';
     footer.style.backgroundColor = 'rgb(50, 50, 50)';
     contact_icon.forEach(icon => {icon.style.color = 'white';});
     portfolio_logo.style.backgroundColor = 'rgb(50, 50, 50)';
