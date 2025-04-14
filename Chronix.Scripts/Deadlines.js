@@ -1,4 +1,3 @@
-// chrome.storage.local.clear()
 const deadlines_section = document.querySelector('deadlines-section');
 const deadlines_container = document.querySelector('.deadlines-container');
 const add_deadline = document.querySelector('.add-deadline');
@@ -60,7 +59,7 @@ function RequestUserInput() {
         const duration = CalculateDeadlineTime(date);
     
         if (!title || !date) {
-            alert("Some information must be forgotten!");
+            alert("Some information seems to be missing!");
             return;
         } else if (duration.weeks > 52) {
             alert('Deadline must not exceed 1 year!');

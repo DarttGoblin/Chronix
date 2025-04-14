@@ -79,14 +79,6 @@
     background-color: rgb(84, 0, 0);
 }
 
-.play-music {
-    background-color: rgb(81, 81, 81);
-}
-
-.play-music:hover {
-    background-color: black;
-}
-
 .task-user-info {
     display: flex;
     gap: 20px;

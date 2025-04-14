@@ -45,7 +45,7 @@ function RequestUserInput() {
     task_user_button.onclick = function() {
         const title = task_user_title.value.trim(); 
         if (!title) {
-            alert("Some information must be forgotten!");
+            alert("Some information seems to be missing!");
             return;
         }
 
