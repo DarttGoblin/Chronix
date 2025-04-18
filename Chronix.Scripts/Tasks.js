@@ -72,7 +72,7 @@ function CreateTask(task) {
     const task_icons_container = document.createElement('div');
     const task_trash_icon = document.createElement('i');
 
-    task_title.innerHTML = task.title;
+    task_title.textContent = task.title.replace(/\w\S*/g, t => t.charAt(0).toUpperCase() + t.slice(1).toLowerCase());
     task_check_box.setAttribute('task-id', task.id);
     task_trash_icon.setAttribute('task-id', task.id);
     task_check_box.onclick = function() {CheckTask(task_check_box ,task.id)};
