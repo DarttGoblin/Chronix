@@ -2,6 +2,7 @@ const deadlines_section = document.querySelector('deadlines-section');
 const deadlines_container = document.querySelector('.deadlines-container');
 const add_deadline = document.querySelector('.add-deadline');
 const remove_all_deadlines = document.querySelector('.remove-all-deadlines');
+const conversionStates = new Map();
 
 RetrieveDeadlines();
 add_deadline.onclick = RequestUserInput;
@@ -89,6 +90,7 @@ function CreateDeadline(deadline, index) {
     const deadline_timer = document.createElement('span');
     const deadline_trash_icon = document.createElement('i');
     const date = CalculateDeadlineTime(deadline.date);
+    let is_converted = conversionStates.get(deadline.id) || false;
 
     if (date == 'Expired') {deadline_timer.textContent = 'Expired';}
     else if (date.weeks > 0) {deadline_timer.textContent = `${date.weeks}w ${date.days}d ${date.hours}h ${date.minutes}m`;}
@@ -97,6 +99,10 @@ function CreateDeadline(deadline, index) {
     deadline_title.innerHTML = (index + 1) + '. ' + deadline.title;
     deadline_trash_icon.setAttribute('deadline-id', deadline.id);
     deadline_trash_icon.onclick = function() {RemoveDeadline(deadline.id)};
+    deadline_timer.onclick = function() {
+        is_converted = ConvertDate(this, deadline.id, is_converted);
+        conversionStates.set(deadline.id, is_converted);
+    };
 
     deadline_container.classList.add('deadline-container');
     deadline_title.classList.add('deadline-title');
@@ -123,7 +129,7 @@ function RemoveDeadline(deadline_id) {
             chrome.storage.local.set({deadlines: deadlines_filtered});
             RetrieveDeadlines();
             AdjustHeight();
-        })
+        });
 
         SaveHistoryEvent(`Removed "${deadline.title}" deadline with the id: ${deadline.id} and the date: ${deadline.date}`);
     }
@@ -158,6 +164,25 @@ function CalculateDeadlineTime(deadline_date) {
     const weeks = Math.floor(Math.floor(diff / (1000 * 60)) / (60 * 24 * 7));
 
     return { weeks, days, hours, minutes };
+}
+
+function ConvertDate(timer_span, deadline_id, is_converted) {
+    chrome.storage.local.get({ deadlines: [] }, function(data) {
+        const converted_deadline_timer = data.deadlines.find(deadline => deadline.id == deadline_id);
+        if (!converted_deadline_timer) return;
+
+        if (!is_converted) {
+            const d = new Date(converted_deadline_timer.date);
+            timer_span.textContent = `${d.getFullYear()}/${(d.getMonth()+1).toString().padStart(2, '0')}/${d.getDate().toString().padStart(2, '0')} ${d.getHours().toString().padStart(2, '0')}:${d.getMinutes().toString().padStart(2, '0')}`;
+        } else {
+            const date = CalculateDeadlineTime(converted_deadline_timer.date);
+            if (date == 'Expired') timer_span.textContent = 'Expired';
+            else if (date.weeks > 0) timer_span.textContent = `${date.weeks}w ${date.days}d ${date.hours}h ${date.minutes}m`;
+            else timer_span.textContent = `${date.days}d ${date.hours}h ${date.minutes}m`;
+        }
+    });
+
+    return !is_converted;
 }
 
 function SaveHistoryEvent(user_action) {

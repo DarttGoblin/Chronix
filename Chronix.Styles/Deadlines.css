@@ -42,8 +42,9 @@
 .deadline-timer {
     font-size: 18px;
     font-weight: 600;
-    width: 140px;
+    width: 150px;
     text-align: right;
+    cursor: pointer;
 }
 
 .deadline-icon {
